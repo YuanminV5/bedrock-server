@@ -1,0 +1,17 @@
+services:
+  bedrock-server:
+    build: .
+    image: minecraft-bedrock-server:latest
+    container_name: minecraft-bedrock-server
+    ports:
+      - "19132:19132/udp"  # IPv4 port
+      - "19133:19133/udp"  # IPv6 port
+    restart: unless-stopped
+    environment:
+      - LD_LIBRARY_PATH=/minecraft-bedrock
+    networks:
+      - minecraft-network
+
+networks:
+  minecraft-network:
+    driver: bridge
