@@ -21,9 +21,9 @@ RUN apt update && \
 WORKDIR /tmp/minecraft
 
 # Download and extract Minecraft Bedrock Server
-RUN wget https://www.minecraft.net/bedrockdedicatedserver/bin-linux/bedrock-server-1.21.123.2.zip && \
-    unzip bedrock-server-1.21.123.2.zip && \
-    rm bedrock-server-1.21.123.2.zip
+RUN wget https://www.minecraft.net/bedrockdedicatedserver/bin-linux/bedrock-server-1.21.124.2.zip && \
+    unzip bedrock-server-1.21.124.2.zip && \
+    rm bedrock-server-1.21.124.2.zip
 
 # Stage 2: Runtime environment
 FROM ubuntu:22.04 AS runtime

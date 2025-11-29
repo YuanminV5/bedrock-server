@@ -49,18 +49,52 @@ docker-compose exec bedrock-server /bin/bash
 docker exec -it minecraft-bedrock /bin/bash
 ```
 
+## Docker Image Management
+
+### Build Docker Image
+
+```powershell
+# Build the Docker image locally
+docker build -t bedrock-server:latest .
+
+# Build with custom tag
+docker build -t bedrock-server:v1.0 .
+```
+
+### Save Docker Image as .tar File
+
+```powershell
+# Save the image to a .tar file
+docker save -o bedrock-server.tar bedrock-server:latest
+
+# Save with timestamp
+$timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+docker save -o "bedrock-server-$timestamp.tar" bedrock-server:latest
+```
+
+### Load Docker Image from .tar File
+
+```powershell
+# Load the image from .tar file
+docker load -i bedrock-server.tar
+
+# Verify the image was loaded
+docker images | Select-String bedrock-server
+```
+
 ## Backup and Restore
 
 ### Backup Worlds
 
-```bash
+```powershell
 # Create backup of world data
-tar -czf backup-$(date +%Y%m%d-%H%M%S).tar.gz data/
+$timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+tar -czf "backup-$timestamp.tar.gz" data/
 ```
 
 ### Restore Worlds
 
-```bash
+```powershell
 # Stop the server
 docker-compose down
 

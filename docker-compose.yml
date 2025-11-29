@@ -1,7 +1,7 @@
 services:
   bedrock-server:
     build: .
-    image: minecraft-bedrock-server:latest
+    image: bedrock-server:latest
     container_name: minecraft-bedrock-server
     ports:
       - "19132:19132/udp"  # IPv4 port
